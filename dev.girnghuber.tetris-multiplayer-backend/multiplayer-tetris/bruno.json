@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "multiplayer-tetris",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

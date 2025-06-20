@@ -1,0 +1,1 @@
+Anchor for the Falling piece is always the top left most cell;
