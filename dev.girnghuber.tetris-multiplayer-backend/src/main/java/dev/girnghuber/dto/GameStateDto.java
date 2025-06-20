@@ -1,13 +1,15 @@
 package dev.girnghuber.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import dev.girnghuber.game.GameState;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class GameStateDto {
-    public final String gameId;
-    public final List<BoardDto> boards = new ArrayList<>();
+    public String gameId;
+    public List<BoardDto> boards = new ArrayList<>();
 
     public GameStateDto(){
         this.gameId = "-";
@@ -20,5 +22,13 @@ public class GameStateDto {
             BoardDto boardDto = new BoardDto(value, key);
             this.boards.add(boardDto);
         });
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
+
+    public List<BoardDto> getBoards() {
+        return boards;
     }
 }

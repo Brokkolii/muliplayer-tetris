@@ -27,6 +27,7 @@ public class GameResource {
 
     @GET
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getGame(@PathParam("id") String id) {
         GameState game = gameService.getGame(id);
         if (Objects.isNull(game)) {
