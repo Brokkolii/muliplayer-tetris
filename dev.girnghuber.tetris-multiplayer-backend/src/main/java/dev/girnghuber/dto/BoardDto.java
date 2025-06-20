@@ -1,15 +1,11 @@
 package dev.girnghuber.dto;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import dev.girnghuber.game.Board;
 import dev.girnghuber.game.Cell;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class BoardDto {
-    public String player;
-    public CellDto[][] cells;
-
-    public BoardDto(){}
+    private final String player;
+    private final CellDto[][] cells;
 
     public BoardDto(Board board, String playerName) {
         this.player = playerName;

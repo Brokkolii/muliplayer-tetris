@@ -34,7 +34,6 @@ public class GameResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         GameStateDto gameDto = new GameStateDto(game);
-        // TODO: this returns a reference and not the object itself
         return Response.ok(gameDto).build();
     }
 }

@@ -1,15 +1,11 @@
 package dev.girnghuber.dto;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import dev.girnghuber.game.Cell;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class CellDto {
-    public int row;
-    public int column;
-    public String piece;
-
-    public CellDto(){}
+    private final int row;
+    private final int column;
+    private String piece;
 
     public CellDto(Cell cell, int y, int x) {
         if (!cell.isEmpty()) {
