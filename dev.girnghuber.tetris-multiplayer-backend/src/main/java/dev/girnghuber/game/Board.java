@@ -54,6 +54,10 @@ public class Board {
         this.fallingPiece = piece;
     }
 
+    public void removeFallingPiece() {
+        this.fallingPiece = null;
+    }
+
     public boolean hasFallingPiece() {
         return !Objects.isNull(fallingPiece);
     }

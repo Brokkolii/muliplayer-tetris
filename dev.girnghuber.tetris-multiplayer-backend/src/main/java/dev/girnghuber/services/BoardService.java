@@ -10,12 +10,17 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class BoardService {
     public void nextTick(Board board) {
+        System.out.println("--------");
         if (!board.hasFallingPiece()) {
+            System.out.println("spawn");
             spawnNewPiece(board);
         } else {
+            System.out.println("try fall");
             if (fallingPieceCanMoveDown(board)) {
+                System.out.println("fall");
                 moveDownFallingPiece(board);
             } else {
+                System.out.println("lock");
                 lockFallingPiece(board);
             }
 
@@ -48,6 +53,7 @@ public class BoardService {
         for (int[] cellCoord : cellCoords) {
             int y = cellCoord[0] - 1;
             int x = cellCoord[1];
+            if (y < 0) return false;
             Cell cell = board.getCell(y, x);
             if (!cell.isEmpty()) {
                 return false;
@@ -62,9 +68,10 @@ public class BoardService {
 
     private void lockFallingPiece(Board board) {
         Piece fallingPiece = board.getFallingPiece();
+        board.removeFallingPiece();
         int[][] cellCoords = fallingPiece.getCellCoords();
         for (int[] coords : cellCoords) {
-            int y = coords[0] - 1;
+            int y = coords[0];
             int x = coords[1];
             Cell cell = board.getCell(y, x);
             CellType cellType = CellType.valueOf(fallingPiece.getType().name());

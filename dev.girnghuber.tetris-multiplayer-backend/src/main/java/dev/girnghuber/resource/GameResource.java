@@ -20,7 +20,7 @@ public class GameResource {
     @Path("/create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createGame() {
-        String playerName = "Brokkolii"; // TODO: get from auth or something
+        String playerName = "Brokkolii"; // TODO: get from auth or post or something
         GameState game = gameService.createGame(playerName);
         return Response.ok(game.getId()).build();
     }
@@ -35,5 +35,19 @@ public class GameResource {
         }
         GameStateDto gameDto = new GameStateDto(game);
         return Response.ok(gameDto).build();
+    }
+
+    @POST
+    @Path("/start/{id}")
+    public Response startGame(@PathParam("id") String id) {
+        gameService.startGame(id);
+        return Response.ok().build();
+    }
+
+    @POST
+    @Path("/stop/{id}")
+    public Response stopGame(@PathParam("id") String id) {
+        gameService.stopGame(id);
+        return Response.ok().build();
     }
 }

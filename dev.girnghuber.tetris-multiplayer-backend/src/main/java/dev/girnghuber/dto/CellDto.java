@@ -11,8 +11,8 @@ public class CellDto {
         if (!cell.isEmpty()) {
             this.piece = cell.getType().toString();
         }
-        this.row = y + 1;
-        this.column = x + 1;
+        this.row = x + 1;
+        this.column = y + 1;
     }
 
     public int getRow() {
